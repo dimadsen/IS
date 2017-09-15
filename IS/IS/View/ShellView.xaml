@@ -1,0 +1,187 @@
+﻿<UserControl x:Class="IS.ShellView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IS"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1000">
+    <UserControl.DataContext>
+        <local:ShellViewModel/>
+    </UserControl.DataContext>
+    <StackPanel Margin="0,-9,0,0">
+        <Border BorderBrush="Brown" CornerRadius="7" Margin="15,15,15,350" Padding="15" BorderThickness="1" Height="350" RenderTransformOrigin="0.502,1.406">
+            <StackPanel>
+                <Grid Height="85">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="1.5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  FontSize="20" Grid.ColumnSpan="5" TextAlignment="Center" TextDecorations="Underline"> Инспекции</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" FontSize="15" TextAlignment="Center">Выбрать инспектора</TextBlock>
+                    <ComboBox Grid.Column="1" Grid.Row="1" FontSize="13" ItemsSource="{Binding Inspectors}" SelectedValue="{Binding SelectedInspector}" SelectedIndex="0" DisplayMemberPath="FullName" />
+                    <TextBlock Grid.Column="3" Grid.Row="1" FontSize="15" >Поиск</TextBlock>
+                    <TextBox Grid.Column="3" Grid.Row="1"  FontSize="15" Margin="97,0,90,0" Grid.ColumnSpan="2"  Text="{Binding TextSearch,UpdateSourceTrigger=PropertyChanged}" RenderTransformOrigin="0.587,0.579" ></TextBox>
+                    <Button Grid.Column="0" Grid.Row="2" Margin="0,13,66,1" Command="{Binding RemoveCommand}" CommandParameter="{Binding InspectionsCollection.CurrentItem}">Удалить инспекцию</Button>
+                </Grid>
+                <ListView Height="201" ItemsSource="{Binding InspectionsCollection}" Margin="0,15,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden"  IsSynchronizedWithCurrentItem="True" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn>
+                                <GridViewColumnHeader Content="Название инспекции" Width="180" FontSize="15"/>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border  BorderBrush="Black" >
+                                            <TextBlock  Text="{Binding Name , UpdateSourceTrigger=PropertyChanged }"  Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" >
+
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Gesture="LeftDoubleClick"   Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=DataContext.FilterCommand}" CommandParameter="{Binding .}"  />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn>
+                                <GridViewColumnHeader Content="Дата" Width="100" FontSize="15"/>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border  BorderBrush="Black" >
+                                            <TextBlock  Text="{Binding DateOfInspection, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd.MM.yyyy}}" Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" >
+
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Gesture="LeftDoubleClick"   Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=DataContext.FilterCommand}" CommandParameter="{Binding .}"  />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn>
+                                <GridViewColumnHeader Content="Инспектор" Width="180" FontSize="15"/>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border  BorderBrush="Black" >
+                                            <TextBlock  Text="{Binding Inspector.FullName, UpdateSourceTrigger=PropertyChanged}" Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" >
+
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Gesture="LeftDoubleClick"   Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=DataContext.FilterCommand}" CommandParameter="{Binding .}"  />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn>
+                                <GridViewColumnHeader Content="Комментарий" Width="300" FontSize="15"/>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border  BorderBrush="Black" >
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" >
+
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Gesture="LeftDoubleClick"   Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=DataContext.FilterCommand}" CommandParameter="{Binding .}"  />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn>
+                                <GridViewColumnHeader Content="Кол-во замечаний" Width="160"  FontSize="15"/>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border  BorderBrush="Black" >
+                                            <TextBlock  Text="{Binding Remarks.Count, UpdateSourceTrigger=PropertyChanged}" Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" >
+
+                                                <TextBlock.InputBindings>
+                                                    <MouseBinding Gesture="LeftDoubleClick"   Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=DataContext.FilterCommand}" CommandParameter="{Binding .}"  />
+                                                </TextBlock.InputBindings>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <TextBlock FontSize="12" FontStyle="Oblique" TextAlignment="Right" >(Примечание: двойной клик по строке показывает замечания выбранной инспекции)</TextBlock>
+            </StackPanel>
+        </Border>
+        <Border  BorderBrush="Brown" CornerRadius="7" Height="290" Margin="15,-700,15,-350" BorderThickness="1" Padding="15" RenderTransformOrigin="0.523,-1.029">
+            <StackPanel>
+                <Grid Height="85">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="144*" />
+                        <ColumnDefinition Width="232*" />
+                        <ColumnDefinition Width="187*" />
+                        <ColumnDefinition Width="188*" />
+                        <ColumnDefinition Width="187*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  FontSize="20" Grid.ColumnSpan="5" TextAlignment="Center" TextDecorations="Underline">Замечания</TextBlock>
+                    <TextBlock Grid.Column="0" Grid.Row="1" FontSize="15"   TextAlignment="Center">Инспекция:</TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="1" DataContext="{Binding InspectionsCollection}" FontStyle="Oblique" FontSize="15" Text="{Binding Name}" ></TextBlock>
+
+                </Grid>
+                <ListView Height="155" ItemsSource="{Binding RemarksCollection}" Margin="0,15,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden"  IsSynchronizedWithCurrentItem="True" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn>
+                                <GridViewColumnHeader Content="Замечание" Width="300" FontSize="15"/>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border  BorderBrush="Black" >
+                                            <TextBlock  Text="{Binding Comment , UpdateSourceTrigger=PropertyChanged }" >
+
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn>
+                                <GridViewColumnHeader Content="Дата устранения" Width="300" FontSize="15"/>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border  BorderBrush="Black" >
+                                            <TextBlock TextAlignment="Center" Text="{Binding DateOfElimination, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:dd.MM.yyyy}}" >
+
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn>
+                                <GridViewColumnHeader Content="Комментарий" Width="350" FontSize="15"/>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border  BorderBrush="Black" >
+                                            <TextBlock  Text="{Binding TextOfComments, UpdateSourceTrigger=PropertyChanged}" Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListView}}}" >
+
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>

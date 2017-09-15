@@ -1,0 +1,194 @@
+﻿<UserControl x:Class="IS.InspectorsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:IS"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1000">
+    <UserControl.DataContext>
+        <local:InspectorsViewModel/>
+    </UserControl.DataContext>
+    <StackPanel Margin="0,-9,0,0">
+        <Border BorderBrush="Brown" CornerRadius="7" BorderThickness="1" Margin="15,15,506,15" Padding="15" Height="670">
+            <StackPanel>
+                <Grid Height="163">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="201*"/>
+                        <ColumnDefinition Width="265*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.ColumnSpan="2" Margin="9,9,9,15" FontSize="20" TextAlignment="Center" TextDecorations="Underline">Добавленные инспекторы</TextBlock>
+                    <TextBlock Height="24" FontSize="17" Grid.Row="1" TextAlignment="Center" Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062">Поиск по фамилии</TextBlock>
+                    <TextBox Grid.Column="1" Grid.Row="1"  FontSize="18"  Margin="9,9,0,15"></TextBox>
+                    <TextBlock Height="24" FontSize="17" Grid.Row="2" TextAlignment="Center" Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062">Поиск по номеру</TextBlock>
+                    <TextBox Grid.Column="1" Grid.Row="1"  FontSize="18"  Margin="9,9,0,15" Text="{Binding LastNameSearch,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox Grid.Column="1" Grid.Row="2"  FontSize="18"  Margin="9,9,0,15" Text="{Binding NumberSearch,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                </Grid>
+                <ListBox Height="475" SelectedItem="{Binding SelectedInspector}" ItemsSource="{Binding InspectorsCollection}" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <TextBlock FontSize="19" Text="{Binding Path=LastName}" />
+                                <TextBlock FontSize="16" Text="{Binding Path=FirstName}" />
+                                <TextBlock FontSize="16" Text="{Binding Path=MiddleName}" />
+                                <TextBlock FontSize="17" Text="{Binding Path=Number}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Border>
+        <Border BorderBrush="Brown" CornerRadius="7" BorderThickness="1" Margin="506,-685,15,15" Padding="15"  Height="670" RenderTransformOrigin="4.266,0.469">
+            <StackPanel>
+                <Border BorderBrush="Black" CornerRadius="7" BorderThickness="1" Height="299" >
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="201*"/>
+                            <ColumnDefinition Width="265*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.ColumnSpan="2" Margin="9,9,9,15" FontSize="20" TextAlignment="Center" TextDecorations="Underline"><Run Text="Добавление инспектора"/></TextBlock>
+                        <TextBlock Height="24" FontSize="17" Grid.Row="1" TextAlignment="Center" Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062"><Run Text="Фамилия"/></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="1"  FontSize="18"  Margin="9,9,9,15">
+                            <Binding Path="NewInspector.LastName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <local:InspectorsViewModel/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+
+                        </TextBox>
+                        <TextBlock Grid.Row="2" TextAlignment="Center" Height="24" FontSize="17"  Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062"><Run Text="Имя"/></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="2"  FontSize="18"  Margin="9,9,9,15">
+                            <Binding Path="NewInspector.FirstName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <local:InspectorsViewModel/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+                        <TextBlock Height="24" Grid.Row="3" FontSize="17" TextAlignment="Center" Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062"><Run Text="Отчество"/></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="3"  FontSize="18"  Margin="9,9,9,15">
+                            <Binding Path="NewInspector.MiddleName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <local:InspectorsViewModel/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+                        <TextBlock Height="20" Grid.Row="4" FontSize="17" TextAlignment="Center" Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062"><Run Text="Номер"/></TextBlock>
+                        <xctk:IntegerUpDown Grid.Column="1"  Grid.Row="4" Margin="9,9,9,15" FontSize="17" Value="{Binding NewInspector.Number}" Minimum="1" />
+                        <Button Grid.Row="5" FontSize="20" Grid.ColumnSpan="2" Margin="9,9,9,9" Command="{Binding AddCommand}" Content="Добавить"/>
+
+                    </Grid>
+                </Border>
+                <Border BorderBrush="Black" CornerRadius="7" BorderThickness="1" Margin="0,15,0,0" Height="323">
+                    <Grid  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="201*"/>
+                            <ColumnDefinition Width="265*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.ColumnSpan="2" Margin="9,9,9,10" FontSize="20" TextAlignment="Center" TextDecorations="Underline"><Run Text="Редактирование инспектора"/></TextBlock>
+                        <TextBlock Height="24" FontSize="17" Grid.Row="1" TextAlignment="Center" Margin="9,9,9,9" RenderTransformOrigin="0.494,0.062"><Run Text="Фамилия"/></TextBlock>
+                        <TextBox DataContext="{Binding SelectedInspector}" Grid.Column="1" Grid.Row="1"  FontSize="18"  Margin="9,9,9,10">
+                            <Binding  Path="LastName" UpdateSourceTrigger="PropertyChanged" >
+                                <Binding.ValidationRules>
+                                    <local:InspectorsViewModel/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+
+                        </TextBox>
+                        <TextBlock Grid.Row="2" TextAlignment="Center" Height="24" FontSize="17"  Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062"><Run Text="Имя"/></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="2" DataContext="{Binding SelectedInspector}" FontSize="18"  Margin="9,9,9,10">
+                            <Binding Path="FirstName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <local:InspectorsViewModel/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+                        <TextBlock Height="24" Grid.Row="3" FontSize="17" TextAlignment="Center" Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062"><Run Text="Отчество"/></TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="3" DataContext="{Binding SelectedInspector}" FontSize="18"  Margin="9,9,9,10">
+                            <Binding Path="MiddleName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <local:InspectorsViewModel/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                            <Validation.ErrorTemplate>
+                                <ControlTemplate>
+                                    <StackPanel>
+                                        <AdornedElementPlaceholder />
+                                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Validation.ErrorTemplate>
+                        </TextBox>
+                        <TextBlock Grid.Row="4" FontSize="17" TextAlignment="Center" Margin="9,10" RenderTransformOrigin="0.494,0.062"><Run Text="Номер"/></TextBlock>
+                        <xctk:IntegerUpDown Grid.Column="1"  Grid.Row="4" Margin="9,9,9,10" FontSize="17" Value="{Binding Number}" DataContext="{Binding SelectedInspector}" Minimum="1" />
+                        <Button Grid.Row="5" FontSize="20"  Grid.ColumnSpan="2" Margin="9,9,9,7"  Command="{Binding EditCommand}" CommandParameter="{Binding SelectedInspector}"  >Сохранить</Button>
+                        <Button Grid.Row="6" FontSize="20"  Grid.ColumnSpan="2" Margin="9,9,9,9"  Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedInspector}">Удалить</Button>
+
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Border>
+    </StackPanel>
+</UserControl>
