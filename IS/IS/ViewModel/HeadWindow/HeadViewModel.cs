@@ -19,12 +19,12 @@ namespace IS
         public HeadViewModel()
         {
             // добавлeние необходимых ViewModel
-
+            
             PageViewModels.Add(new ShellViewModel());
             PageViewModels.Add(new InspectionsViewModel());
+            PageViewModels.Add(new EditInspectionsViewModel());
             PageViewModels.Add(new InspectorsViewModel());
-            
-            
+
             //Устанаовка в качестве первой загруженной страницы
             CurrentPageViewModel = PageViewModels.FirstOrDefault();
 

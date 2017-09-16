@@ -178,14 +178,14 @@ namespace IS
         }
 
         //команда удаления замечания из списка
-        Command removeCommand;
+        Command removeRemarkCommand;
         public Command RemoveRemarkCommand
         {
             //В качестве параметра в команду будет передаваться удаляемый объект
             get
             {
-                return removeCommand ??
-                (removeCommand = new Command(obj =>
+                return removeRemarkCommand ??
+                (removeRemarkCommand = new Command(obj =>
                 {
                     Remark remark = obj as Remark; // приведение к нужному типу
 

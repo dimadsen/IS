@@ -16,6 +16,9 @@
         <DataTemplate DataType="{x:Type local:InspectorsViewModel}">
             <local:InspectorsView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:EditInspectionsViewModel}">
+            <local:EditInspectionsView/>
+        </DataTemplate>
     </Window.Resources>
     <DockPanel>
         <Border DockPanel.Dock="Right" BorderBrush="Black" >

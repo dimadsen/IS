@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\svercosh\Documents\Visual Studio 2015\Projects\IS\IS\obj\x86\Debug\
+C:\Users\svercosh\Documents\Visual Studio 2015\Projects\MyProject\IS\IS\obj\x86\Debug\
 IS
 none
 false
 DEBUG;TRACE
-C:\Users\svercosh\Documents\Visual Studio 2015\Projects\IS\IS\Config\App.xaml
-4-350050423
+C:\Users\svercosh\Documents\Visual Studio 2015\Projects\MyProject\IS\IS\Config\App.xaml
+5-842225630
 
-191642263295
-241440020721
-View\ShellView.xaml;View\InspectorsView.xaml;View\InspectionsView.xaml;View\HeadView.xaml;
+21-895936693
+24-1177739895
+View\EditInspectionsView.xaml;View\ShellView.xaml;View\InspectorsView.xaml;View\InspectionsView.xaml;View\HeadView.xaml;
 
 False
 

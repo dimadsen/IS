@@ -116,6 +116,10 @@
     </Compile>
     <Compile Include="AdittionalClasses\ISContext.cs" />
     <Compile Include="AdittionalClasses\Command.cs" />
+    <Compile Include="View\EditInspectionsView.xaml.cs">
+      <DependentUpon>EditInspectionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\EditInspectionsViewModel.cs" />
     <Compile Include="View\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
@@ -168,6 +172,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="View\EditInspectionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

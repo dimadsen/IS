@@ -210,7 +210,7 @@ namespace IS
         {
             get
             {
-                return "Справочник Инспекторы";
+                return "Справочник \"Инспекторы\"";
             }
         }
         #endregion

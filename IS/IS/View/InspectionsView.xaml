@@ -11,7 +11,7 @@
     </UserControl.DataContext>
     
     <StackPanel Margin="0,-9,0,0" >
-        <Border BorderBrush="Brown" CornerRadius="7" Margin="15,15,15,350" Padding="15" BorderThickness="1" Height="350" RenderTransformOrigin="0.502,1.406">
+        <Border BorderBrush="Black" CornerRadius="7" Margin="15,15,15,350" Padding="15" BorderThickness="1" Height="350" RenderTransformOrigin="0.502,1.406">
             <StackPanel>
                 <Border BorderBrush="Black" CornerRadius="7" BorderThickness="1" Height="318" Margin="0,0,470,0" >
                     <Grid>
@@ -83,7 +83,7 @@
             </StackPanel>
 
         </Border >
-        <Border  BorderBrush="Brown" CornerRadius="7" Height="290" Margin="15,-700,15,-350" BorderThickness="1" Padding="15" RenderTransformOrigin="0.523,-1.029">
+        <Border  BorderBrush="Black" CornerRadius="7" Height="290" Margin="15,-700,15,-350" BorderThickness="1" Padding="15" RenderTransformOrigin="0.523,-1.029">
             <StackPanel>
                 <TextBlock TextAlignment="Center" FontSize="20" Margin="9,0,0,7" TextDecorations="Underline" Height="29" >Список добавленных замечаний</TextBlock>
             <ListBox ItemsSource="{Binding RemarksCollection}"  SelectedItem="{Binding SelectedRemark}" Height="210" >

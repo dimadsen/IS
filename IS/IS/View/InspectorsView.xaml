@@ -10,8 +10,9 @@
     <UserControl.DataContext>
         <local:InspectorsViewModel/>
     </UserControl.DataContext>
+    
     <StackPanel Margin="0,-9,0,0">
-        <Border BorderBrush="Brown" CornerRadius="7" BorderThickness="1" Margin="15,15,506,15" Padding="15" Height="670">
+        <Border BorderBrush="Black" CornerRadius="7" BorderThickness="1" Margin="15,15,506,15" Padding="15" Height="670">
             <StackPanel>
                 <Grid Height="163">
                     <Grid.RowDefinitions>
@@ -44,7 +45,7 @@
                 </ListBox>
             </StackPanel>
         </Border>
-        <Border BorderBrush="Brown" CornerRadius="7" BorderThickness="1" Margin="506,-685,15,15" Padding="15"  Height="670" RenderTransformOrigin="4.266,0.469">
+        <Border BorderBrush="Black" CornerRadius="7" BorderThickness="1" Margin="506,-685,15,15" Padding="15"  Height="670" RenderTransformOrigin="4.266,0.469">
             <StackPanel>
                 <Border BorderBrush="Black" CornerRadius="7" BorderThickness="1" Height="299" >
                     <Grid >
