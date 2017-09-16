@@ -58,8 +58,9 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <TextBlock FontSize="10" FontStyle="Oblique" TextAlignment="Right" >(Примечание: двойной клик по строке показывает замечания выбранной инспекции)</TextBlock>
                 <TextBlock  Margin="9,0" FontSize="14" TextAlignment="Center" TextDecorations="Underline">Замечания</TextBlock>
-                <ListBox Margin="0,10,0,0" Height="271" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedItem="{Binding SelectedRemark}" ItemsSource="{Binding RemarksCollection}" >
+                <ListBox Margin="0,10,0,0" Height="271" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedItem="{Binding SelectedRemark}" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding RemarksCollection}" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5">
@@ -107,13 +108,13 @@
 
                         </TextBox>
                         <TextBlock Grid.Row="2" TextAlignment="Center" FontSize="17"  Margin="9,9,9,10" RenderTransformOrigin="0.494,0.062"><Run Text="Инспектор"/></TextBlock>
-                        <ComboBox Grid.Row="2" Grid.Column="1" Margin="9,9,9,10" FontSize="17"  ItemsSource="{Binding Inspectors}" SelectedItem="{Binding SelectedInspector.Inspector}"   DisplayMemberPath="FullName"></ComboBox>
+                        <ComboBox Grid.Row="2" Grid.Column="1" Margin="9,9,9,10" FontSize="17"  ItemsSource="{Binding Inspectors}" SelectedItem="{Binding SelectedInspection.Inspector}"   DisplayMemberPath="FullName"></ComboBox>
                         <TextBlock Height="24" Grid.Row="3" FontSize="17" TextAlignment="Center" Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062"><Run Text="Дата инспекции"/></TextBlock>
                         <DatePicker Grid.Column="1" Grid.Row="3" Margin="9,9,9,10"  FontSize="17" SelectedDate="{Binding SelectedInspection.DateOfInspection}" Text="{Binding InspectionEditDate, StringFormat={}{0:dd.MM.yyyy}}" />
                         <TextBlock Height="20" Grid.Row="4" FontSize="17" TextAlignment="Center" Margin="9,9,9,15" RenderTransformOrigin="0.494,0.062"><Run Text="Комментарий"/></TextBlock>
                         <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding SelectedInspection.Comment, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" FontSize="18"  Margin="9,9,9,9"></TextBox>
-                        <Button Grid.Row="5" FontSize="20"  Margin="10,0,248,10" Command="{Binding RemoveCommand}" CommandParameter="{Binding InspectionsCollection.CurrentItem}" Content="Удалить" Grid.ColumnSpan="2"/>
-                        <Button Grid.Row="5" Grid.Column="1" FontSize="20" Margin="10,0,10,10" Command="{Binding EditCommand}" CommandParameter="{Binding InspectionsCollection.CurrentItem}" Content="Сохранить"></Button>
+                        <Button  Grid.Row="5" FontSize="20"  Margin="10,0,248,10" Command="{Binding RemoveCommand}" CommandParameter="{Binding InspectionsCollection.CurrentItem}" Content="Удалить" Grid.ColumnSpan="2"/>
+                        <Button  Grid.Row="5" Grid.Column="1" FontSize="20" Margin="10,0,10,10" Command="{Binding EditCommand}" CommandParameter="{Binding InspectionsCollection.CurrentItem}" Content="Сохранить"></Button>
                     </Grid>
                 </Border>
                 <Border BorderBrush="Black" CornerRadius="7" BorderThickness="1" Margin="0,15,0,0" Height="323">

@@ -112,11 +112,10 @@ namespace IS
 
             if (ins != null)
             {
-                MessageBox.Show("Такой номер уже существует. Инспектор не добавлен");
+                MessageBox.Show("Такой номер уже существует. Инспектор не добавлен", MessageBoxImage.Error.ToString());
             }
             else
             {
-
                 db.Inspectors.Add(NewInspector);
                 db.SaveChanges();
 

@@ -297,15 +297,6 @@ namespace IS
             }
         }
         Inspection selectedInspector;
-        public Inspection SelectedInspector
-        {
-            get { return selectedInspector; }
-            set
-            {
-                selectedInspector = value;
-                OnPropertyChanged("SelectedInspector");
-            }
-        }
         #endregion
 
         #region Свойство для DatePiсker
