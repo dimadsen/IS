@@ -19,7 +19,7 @@ namespace IS
         public virtual DbSet<Inspector> Inspectors { get; set; }
         public virtual DbSet<Remark> Remarks { get; set; }
     }
-    class MyContextInitializer : DropCreateDatabaseAlways<ISContext>
+    class MyContextInitializer : CreateDatabaseIfNotExists<ISContext>
     {
         protected override void Seed(ISContext db)
         {

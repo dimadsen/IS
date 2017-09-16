@@ -112,7 +112,7 @@ namespace IS
 
             if (ins != null)
             {
-                MessageBox.Show("Такой номер уже существует. Инспектор не добавлен", MessageBoxImage.Error.ToString());
+                MessageBox.Show("Такой номер уже существует. Инспектор не добавлен");
             }
             else
             {

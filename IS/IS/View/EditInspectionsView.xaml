@@ -34,12 +34,12 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5">
-                                <TextBlock FontSize="14" Text="{Binding Path=Name}" >
+                                <TextBlock FontSize="14"  Text="{Binding Path=Name}" >
                                     <TextBlock.InputBindings>
                                         <MouseBinding Gesture="LeftDoubleClick"   Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=DataContext.FilterCommand}" CommandParameter="{Binding .}"  />
                                     </TextBlock.InputBindings>
                                 </TextBlock>
-                                <TextBlock FontSize="12" Text="{Binding Path=DateOfInspection,StringFormat={}{0:dd.MM.yyyy}}" Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}">
+                                <TextBlock FontSize="12" FontStyle="Italic" Text="{Binding Path=DateOfInspection,StringFormat={}{0:dd.MM.yyyy}}" Width="{Binding Path=ActualWidth,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}">
                                     <TextBlock.InputBindings>
                                         <MouseBinding Gesture="LeftDoubleClick"   Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=DataContext.FilterCommand}" CommandParameter="{Binding .}"  />
                                     </TextBlock.InputBindings>
@@ -49,7 +49,7 @@
                                         <MouseBinding Gesture="LeftDoubleClick"   Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=DataContext.FilterCommand}" CommandParameter="{Binding .}"  />
                                     </TextBlock.InputBindings>
                                 </TextBlock>
-                                <TextBlock FontSize="12" Text="{Binding Path=Inspector.FullName}"  >
+                                <TextBlock FontSize="12" FontFamily="Verdana" Text="{Binding Path=Inspector.FullName}"  >
                                     <TextBlock.InputBindings>
                                         <MouseBinding Gesture="LeftDoubleClick"   Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl},Path=DataContext.FilterCommand}" CommandParameter="{Binding .}"  />
                                     </TextBlock.InputBindings>
@@ -65,7 +65,7 @@
                         <DataTemplate>
                             <StackPanel Margin="5">
                                 <TextBlock FontSize="14" Text="{Binding Path=TextOfComments}" />
-                                <TextBlock FontSize="12" Text="{Binding Path=DateOfElimination,StringFormat={}{0:dd.MM.yyyy}}" />
+                                <TextBlock FontSize="12" FontStyle="Italic" Text="{Binding Path=DateOfElimination,StringFormat={}{0:dd.MM.yyyy}}" />
                                 <TextBlock FontSize="12" Text="{Binding Path=Comment}"/>
                             </StackPanel>
                         </DataTemplate>

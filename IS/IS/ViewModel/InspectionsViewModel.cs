@@ -291,7 +291,7 @@ namespace IS
         {
             get
             {
-                return "Новая Инспекция";
+                return "Новая инспекция";
             }
         }
         #endregion
