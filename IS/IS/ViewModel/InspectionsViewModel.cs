@@ -214,6 +214,10 @@ namespace IS
 
         public void ExecuteAddCommand(object parameter)
         {
+
+            NewInspection.Name = NewInspection.Name.ToLower();
+            NewInspection.Name = NewInspection.Name.Substring(0, 1).ToUpper() + NewInspection.Name.Remove(0, 1);
+
             db.Inspections.Add(NewInspection);
             db.SaveChanges();
 

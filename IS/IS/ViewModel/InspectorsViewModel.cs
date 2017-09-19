@@ -116,6 +116,15 @@ namespace IS
             }
             else
             {
+                NewInspector.FirstName= NewInspector.FirstName.ToLower();
+                NewInspector.FirstName = NewInspector.FirstName.Substring(0, 1).ToUpper() + NewInspector.FirstName.Remove(0, 1);
+
+                NewInspector.LastName = NewInspector.LastName.ToLower();
+                NewInspector.LastName = NewInspector.LastName.Substring(0, 1).ToUpper() + NewInspector.LastName.Remove(0, 1);
+
+                NewInspector.MiddleName = NewInspector.MiddleName.ToLower();
+                NewInspector.MiddleName = NewInspector.MiddleName.Substring(0, 1).ToUpper() + NewInspector.MiddleName.Remove(0, 1);
+
                 db.Inspectors.Add(NewInspector);
                 db.SaveChanges();
 
