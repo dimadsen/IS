@@ -219,15 +219,13 @@ namespace IS
             NewInspection.Name = NewInspection.Name.Substring(0, 1).ToUpper() + NewInspection.Name.Remove(0, 1);
 
             db.Inspections.Add(NewInspection);
-            db.SaveChanges();
-
+            
             List<Remark> remark = (from r in Remarks
                                    select r).ToList();
 
             //Циклом foreach добавляются все элементы коллекции 
             foreach (Remark r in remark)
             {
-                r.InspectionId = NewInspection.Id;
                 db.Remarks.Add(r);
                 Remarks.Remove(r);
             }
